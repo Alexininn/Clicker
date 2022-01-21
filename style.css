@@ -4,9 +4,33 @@ body, html {
 	margin: 0%;
 }
 
-.enemy1 {
+* {
+	box-sizing: border-box;
+	user-select: none;
+}
+
+.wrap_enemy {
 	width: 15%;
 	height: 30%;
-	border: 2px solid;
 	margin: auto;
 }
+
+.enemy {
+	width: 100%;
+	height: 80%;
+	border: 2px solid;
+}
+
+.hp {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(255, 0, 0);
+}
+.hp_bar {
+	width: 100%;
+	height: 20%;
+	background-color: #ffa3a3;
+	font-size: 20px;
+	color: #fff;
+}
+
