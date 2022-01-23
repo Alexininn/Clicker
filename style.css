@@ -33,4 +33,8 @@ body, html {
 	font-size: 20px;
 	color: #fff;
 }
+.body {
+	background-image: url(https://www.teahub.io/photos/full/98-987227_dark-souls-4k-desktop-background.jpg);
+	background-size: cover;
+}
 
