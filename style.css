@@ -21,7 +21,7 @@ body, html {
 	position: absolute;
 	bottom: 3vmin;
 	right: 2vmin;
-	background-color: hsl(36deg 100% 52%);
+	background-color: hsl(36deg 100% 52% / 15%);
 	display: flex;
 	flex-wrap: nowrap;
     flex-direction: row;
@@ -38,32 +38,42 @@ body, html {
 }
 
 .slot:hover {
-	background-color:hsl(36deg 100% 72%) ;
+	background-color:hsl(36deg 100% 72% / 30%	);
 }
 
 .wrap_enemy {
-	width: 15%;
-	height: 30%;
+	width: 17%;
+	height: 47%;
 	margin: auto;
+	position: absolute;
+	bottom: 0px;
+	left: 41.5%; 
 }
 
 .enemy {
+	position: relative;
 	width: 100%;
 	height: 80%;
-	border: 2px solid;
+	background-image: url(https://i.playground.ru/p/IWsNvij5c9hnol9Lus7Daw.png);
+	background-size: cover;
 }
 
 .hp {
 	width: 100%;
 	height: 100%;
-	background-color: rgb(255, 0, 0);
+	background-color: hsl(0deg 100% 45% / 50%);
 }
 .hp_bar {
 	width: 100%;
-	height: 20%;
-	background-color: #ffa3a3;
+	height: 9%;
+	background-color: hsl(0deg 100% 82% / 50%);
 	font-size: 20px;
 	color: #fff;
+}
+.body {
+	background-image: url(https://www.teahub.io/photos/full/98-987227_dark-souls-4k-desktop-background.jpg);
+	background-size: cover;
+	overflow: hidden;
 }
 
 .number_dmg {
@@ -72,10 +82,11 @@ body, html {
 	height: 10%;
 	margin: auto;
 	color: #ff000091;
+	z-index: 1;
 	transition: 0.5s;
 	font-size: 35px;
 	opacity: 0;
-	animation: 1.1s dmg1 linear;
+	animation: 1.5s dmg2 cubic-bezier(0.4, 0, 1, 1);
 }
 
 @keyframes dmg1 {
@@ -84,11 +95,11 @@ body, html {
 		transform: translate(0px, 0px);
 	}
 	50% {
-		transform: translate(-20px, -40px);
+		transform: translate(-30px, -40px);
 	}
 		100% {
-			opacity: 0;
-			transform: translate(20px, -80px);
+			opacity: 1;
+			transform: translate(30px, -80px);
 	}
 }
 @keyframes dmg2 {
@@ -97,11 +108,11 @@ body, html {
 		transform: translate(0px, 0px);
 	}
 	50% {
-		transform: translate(20px, -40px);
+		transform: translate(30px, -40px);
 	}
 		100% {
 			opacity: 0;
-			transform: translate(-20px, -80px);
+			transform: translate(-30px, -80px);
 	}
 }
 
