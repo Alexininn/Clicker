@@ -26,6 +26,7 @@ const createEnemyElements = (type) => {
   return divHp
 };
 
+// Фабрика врагов первый параметр - тип врага, который совпадает с классом его Bg_image
 function FabricaEnemies(type = "skeleton", hp = 50, dmg = 3) {
   const newEnemy = new Enemy(hp, dmg);
   let hpEnemy = createEnemyElements(type);
@@ -42,7 +43,7 @@ enemy1DMG.subscribe(takeDmg);
 
 
 const attackEnemy = (event) => {
-  if (event.target.className === "enemy skeleton"){
+  if (event.target.classList.contains("enemy")){
     hero.attack(hero.dmg);
     showDmg();
 }
@@ -62,7 +63,7 @@ const showDmg = () => {
 document.body.addEventListener("click", attackEnemy);
 
 const findItem = (event) => {
-  if (event.target.className === "item") {
+  if (event.target.classList.contains("item")) {
     event.target.style.opacity = 0;
     inventory.indexOf(1);
   }
