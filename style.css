@@ -2,11 +2,43 @@ body, html {
 	height: 100%;
 	width: 100%;
 	margin: 0%;
+	perspective: 1000px;
 }
 
 * {
 	box-sizing: border-box;
 	user-select: none;
+}
+
+.stage1_wrap {
+	width: 100%;
+	height: 100%;
+}
+
+.inventory {
+	height: 12%;
+	width: 20%;
+	position: absolute;
+	bottom: 3vmin;
+	right: 2vmin;
+	background-color: hsl(36deg 100% 52%);
+	display: flex;
+	flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.slot {
+	width: 25%;
+	height: 100%;
+	border: hsl(36deg 100% 22%) 2px solid;
+	transition: 0.2s;
+}
+
+.slot:hover {
+	background-color:hsl(36deg 100% 72%) ;
 }
 
 .wrap_enemy {
@@ -34,3 +66,50 @@ body, html {
 	color: #fff;
 }
 
+.number_dmg {
+	position: absolute;
+	width: 1.5%;
+	height: 10%;
+	margin: auto;
+	color: #ff000091;
+	transition: 0.5s;
+	font-size: 35px;
+	opacity: 0;
+	animation: 1.1s dmg1 linear;
+}
+
+@keyframes dmg1 {
+	0% {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+	50% {
+		transform: translate(-20px, -40px);
+	}
+		100% {
+			opacity: 0;
+			transform: translate(20px, -80px);
+	}
+}
+@keyframes dmg2 {
+	0% {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+	50% {
+		transform: translate(20px, -40px);
+	}
+		100% {
+			opacity: 0;
+			transform: translate(-20px, -80px);
+	}
+}
+
+.item {
+	position: absolute;
+	width: 3%;
+	height: 10%;
+	transition: 0.4s;
+	background-repeat: no-repeat;
+	background-size: contain;
+}

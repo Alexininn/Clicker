@@ -23,19 +23,18 @@ class Hero {
     this.Curhp = 30;   // current hp (текущее здоровье) 
     this.maxHp = 30;    
     this.hpStep = 100 / this.maxHp;  // Для определения потери хп в Баре
-    this.dmg = 2;
+    this.dmg = 10;
   }
 
   attack(dmg){
    enemy1DMG.broadcast(dmg);
   }
- 
 }
 
 class Enemy {
   constructor () { 
-    this.Curhp = 5;
-    this.maxHp = 5; 
+    this.Curhp = 200;
+    this.maxHp = 200; 
     this.hpStep = 100 / this.maxHp;
     hp1Enemy.textContent = `${this.Curhp}/${this.maxHp}`;
   }
