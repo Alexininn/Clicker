@@ -1,0 +1,58 @@
+
+/* Анимации падения и исчезания врага */
+@keyframes death_rotate {
+	0% {
+		transform: rotate(0deg)
+	}
+	100% {
+		transform: rotate(90deg)
+	}
+}
+
+@keyframes death_opacity {
+	0% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+/* Две анимации вылетающих цифр */
+@keyframes dmg1 {
+	0% {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+	50% {
+		transform: translate(-30px, -40px);
+	}
+		100% {
+			opacity: 1;
+			transform: translate(30px, -80px);
+	}
+}
+@keyframes dmg2 {
+	0% {
+		opacity: 1;
+		transform: translate(0px, 0px);
+	}
+	50% {
+		transform: translate(30px, -40px);
+	}
+		100% {
+			opacity: 0;
+			transform: translate(-30px, -80px);
+	}
+}
+
+/* Покраснение экрана от ударов по герою */
+@keyframes dmg_to_hero_animation {
+	from {
+		box-shadow: #ff000091 inset 1px 1px 100px 20px;
+	}
+	to {
+		box-shadow: #ff000091 inset 1px 1px 100px -100px;
+	}
+}
+

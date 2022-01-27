@@ -1,53 +1,15 @@
 'use strict';
 
-// Функция создания Элементов врага
-const createEnemyElements = (type) => {
-  const divWrapEnemy = document.createElement("div");
-  const divHpBar = document.createElement("div");
-  const divHp = document.createElement("div");
-  const divEnemy = document.createElement("div");
-
-
-  divWrapEnemy.classList.add("wrap_enemy");
-  divHpBar.classList.add("hp_bar");
-  divHp.classList.add("hp");
-  divEnemy.classList.add("enemy");
-
-  switch (type) {
-    case "skeleton" : {
-      divEnemy.classList.add("skeleton");
-      break;
-    }
-  }
-  divWrapEnemy.append(divHpBar);
-  divHpBar.append(divHp);
-  divWrapEnemy.append(divEnemy);
-  wrap.append(divWrapEnemy);
-  return divHp
-};
-
-// Фабрика врагов первый параметр - тип врага, который совпадает с классом его Bg_image
-function FabricaEnemies(type = "skeleton", hp = 50, dmg = 3) {
-  const newEnemy = new Enemy(hp, dmg);
-  let hpEnemy = createEnemyElements(type);
-  newEnemy.hpBar = hpEnemy;
-  hpEnemy.textContent = `${newEnemy.Curhp}/${newEnemy.maxHp}`;
-  return newEnemy;
-};
-
+// Создания объектов для первого уровня
 const enemy1DMG = new Obser();
-const enemy1 = FabricaEnemies("skeleton", 200);
-const hero = new Hero();
-const takeDmg = enemy1.takeDMG.bind(enemy1);
-enemy1DMG.subscribe(takeDmg);
+const heroTakesDMG = new Obser();
+const enemy1 = FabricaEnemies("skeleton", 100, 3, 3);
+const hero = FabricaPlayer();  // HP , DMG
+const enemySkeletontakeDmg = enemy1.takeDMG.bind(enemy1);
+const playerTakeDmg = hero.takeDMG.bind(hero);
 
-
-const attackEnemy = (event) => {
-  if (event.target.classList.contains("enemy")){
-    hero.attack(hero.dmg);
-    showDmg();
-}
-};
+enemy1DMG.subscribe(enemySkeletontakeDmg);
+heroTakesDMG.subscribe(playerTakeDmg);
 
 const showDmg = () => {
   const newNumDmg = document.createElement("div");
@@ -60,7 +22,28 @@ const showDmg = () => {
   setTimeout(() => {tempBox.firstChild.remove()},1100);  
 };
 
+const attackEnemy = (event) => {
+  if (event.target.classList.contains("enemy")){
+    if (enemy1.isAlive) {
+      hero.attack(hero.dmg);
+      showDmg();
+    }
+}
+};
+
 document.body.addEventListener("click", attackEnemy);
+
+const redScreen = () => {
+  divRedScreen.classList.add("anime");
+  setTimeout(() => {divRedScreen.classList.remove("anime")}, 1500);
+}
+
+const attackHero = () => {
+  enemy1.attack(enemy1.dmg);
+  redScreen();
+};
+
+let attackEnemy1ToHero = setInterval(attackHero, enemy1.dmgPerSec * 1000); // первый враг атакует героя раз в т n секунд
 
 const findItem = (event) => {
   if (event.target.classList.contains("item")) {

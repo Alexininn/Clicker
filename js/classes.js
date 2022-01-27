@@ -23,34 +23,61 @@ class Hero {
     this.Curhp = hp;   // current hp (текущее здоровье) 
     this.maxHp = hp;    
     this.dmg = dmg;
+    this.hpBar = null;
+
   }
 
   attack(dmg){
-   enemy1DMG.broadcast(dmg);
+    enemy1DMG.broadcast(dmg);
   }
-}
 
-class Enemy {
-  constructor (hp, dmg) { 
-    this.Curhp = hp;
-    this.maxHp = hp; 
-    this.hpBar = null;
-    this.dmg = dmg;
-    
-  }
-  
   takeDMG(dmg) {
     this.Curhp -= dmg;
     if (this.Curhp <= 0) {
       this.Curhp = 0;
+      this.death();
+    }
+    let hpLeft = this.Curhp * 100 / this.maxHp;
+    this.hpBar.style.width = hpLeft + "%";
+    this.hpBar.textContent = `${this.Curhp}/${this.maxHp}`;
+  }
+
+  death() {
+    clearInterval(attackEnemy1ToHero);
+  }
+};
+
+class Enemy {
+  constructor (hp, dmg, dmgPS) { 
+    this.Curhp = hp;
+    this.maxHp = hp; 
+    this.hpBar = null; // В фабрике сюда передаем div class = "hp" который относится к врагу
+    this.dmg = dmg;
+    this.dmgPerSec = dmgPS;
+    this.isAlive = true;
+    this.wrap = null;  // В фабрике сюда передаем div class = "enemy"
+  }
+  
+  attack(dmg) { //Метод врага атаки по герою
+    heroTakesDMG.broadcast(dmg);
+  }
+
+  takeDMG(dmg) {
+    this.Curhp -= dmg;
+    if (this.Curhp <= 0) {
+      
+      this.death();
     }
     let hpLeft = this.Curhp * 100 / this.maxHp;
     this.hpBar.style.width = hpLeft + "%";
     this.hpBar.textContent = `${this.Curhp}/${this.maxHp}`;
     }
 
-  death(isdead) {
-    
+  death() {
+    this.Curhp = 0;
+    this.isAlive = false;
+    this.wrap.classList.add("anime_death");
+    clearInterval(attackEnemy1ToHero);
   }
-}
+};
 
