@@ -60,6 +60,9 @@ body, html {
 .skeleton {
 	background-image: url(./images/Skeleton.png);
 }
+.frog {
+	background-image: url(./images/frog.png);
+}
 
 .hp {
 	width: 100%;
@@ -76,9 +79,18 @@ body, html {
 }
 
 .body {
-	background-image: url(./images/stage_1_background.jpg);
+	transition: 1s;
 	background-size: cover;
 	overflow: hidden;
+	background-position-y: 100%;
+}
+
+.stage1 {
+	background-image: url(./images/stage_1_background.jpg);
+}
+
+.stage2 {
+	background-image: url(./images/stage_2_background.jpg);
 }
 
 .number_dmg {

@@ -24,17 +24,16 @@ class Hero {
     this.maxHp = hp;    
     this.dmg = dmg;
     this.hpBar = null;
-
+    this.isAlive = true;
   }
 
-  attack(dmg){
-    enemy1DMG.broadcast(dmg);
-  }
+  attack(dmg, i){
+    arrayObservers[i].broadcast(dmg);
+    }
 
   takeDMG(dmg) {
     this.Curhp -= dmg;
     if (this.Curhp <= 0) {
-      this.Curhp = 0;
       this.death();
     }
     let hpLeft = this.Curhp * 100 / this.maxHp;
@@ -43,7 +42,8 @@ class Hero {
   }
 
   death() {
-    clearInterval(attackEnemy1ToHero);
+    this.Curhp = 0;
+    this.isAlive = false;
   }
 };
 
@@ -55,17 +55,20 @@ class Enemy {
     this.dmg = dmg;
     this.dmgPerSec = dmgPS;
     this.isAlive = true;
-    this.wrap = null;  // В фабрике сюда передаем div class = "enemy"
+    this.wrap = null;  // В фабрике сюда передаем div class = "wrap_enemy"
+    this.div = null; // В фабрике сюда передаем div class = "enemy"
   }
   
   attack(dmg) { //Метод врага атаки по герою
-    heroTakesDMG.broadcast(dmg);
+    if (this.isAlive) {
+      heroTakesDMG.broadcast(dmg);
+      redScreen();
+    }
   }
 
   takeDMG(dmg) {
     this.Curhp -= dmg;
     if (this.Curhp <= 0) {
-      
       this.death();
     }
     let hpLeft = this.Curhp * 100 / this.maxHp;
@@ -76,8 +79,8 @@ class Enemy {
   death() {
     this.Curhp = 0;
     this.isAlive = false;
+    this.div.setAttribute("isAlive", "");
     this.wrap.classList.add("anime_death");
-    clearInterval(attackEnemy1ToHero);
   }
 };
 

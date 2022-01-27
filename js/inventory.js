@@ -13,3 +13,12 @@ function spawnItem(url, top = 0, left = 0) {
 }
 
 spawnItem(items[0]);
+
+const findItem = (event) => {
+  if (event.target.classList.contains("item")) {
+    event.target.style.opacity = 0;
+    inventory.indexOf(1);
+  }
+};
+
+document.body.addEventListener("click", findItem);
