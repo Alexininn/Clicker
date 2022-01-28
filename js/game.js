@@ -2,6 +2,8 @@
 
 // Функция первого уровня
 const stage1 = () => { 
+  function stage1(event)  {
+   if (event.target.classList.contains("menuBtn","начать игру")) {
   const enemy1 = FabricaEnemies(0, 0, 41.5, 17, 40, "skeleton", 20, 2, 5); // index bottom left, width, height, type, hp, dmg, dmgPerSecond
   const enemySkeletontakeDmg = enemy1.takeDMG.bind(enemy1);
   const enemy2 = FabricaEnemies(1, 48, 83, 17, 40,"frog", 10, 10, 2);  // index bottom left, width, height, type, hp, dmg, dmgPerSecond
@@ -13,7 +15,10 @@ const stage1 = () => {
   setInterval(() => {enemy1.attack(enemy1.dmg)}, enemy1.dmgPerSec * 1000); // первый враг атакует героя раз в n секунд
   setInterval(() => {enemy2.attack(enemy2.dmg)}, enemy2.dmgPerSec * 1000); // первый враг атакует героя раз в n секунд 
   return {e1:enemy1, e2:enemy2,}
-};
+}}};
+
+let button = document.getElementById("start");
+button.addEventListener("click",stage1);
 
 let enemies = stage1();  // запускаем первый уровень
 
