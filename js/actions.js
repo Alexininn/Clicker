@@ -11,9 +11,7 @@ const stage1Observer = new Obser();
 const hero = FabricaPlayer(30, 9);  // HP , DMG
 const playerTakeDmg = hero.takeDMG.bind(hero);
 
-
 heroTakesDMG.subscribe(playerTakeDmg);
-
 
 const arrayObservers = [enemy1DMG, enemy2DMG];
 const showDmg = (target) => {
