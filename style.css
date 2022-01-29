@@ -53,15 +53,19 @@ body, html {
 .enemy {
 	position: relative;
 	width: 100%;
-	height: 80%;
+	height: 90%;
 	background-size: cover;
 }
 
-.skeleton {
-	background-image: url(./images/Skeleton.png);
+.knight {
+	background-image: url(./images/knight.gif);
 }
-.frog {
-	background-image: url(./images/frog.png);
+.wolf {
+	background-image: url(./images/wolf.gif);
+}
+
+.yorn {
+	background-image: url(./images/yorn.gif);
 }
 
 .hp {
@@ -80,7 +84,6 @@ body, html {
 
 .body {
 	background-image: url(images/gf3.gif);
-	transition: 1s;
 	background-size: cover;
 	overflow: hidden;
 	background-position-y: 100%;	
@@ -92,6 +95,11 @@ body, html {
 
 .stage2 {
 	background-image: url(./images/stage_2_background.jpg);
+	transition: 1.5s;
+}
+.stage3 {
+	background-image: url(./images/stage_3.png);
+	transition: 1.5s;
 }
 
 .number_dmg {
@@ -149,17 +157,17 @@ body, html {
    }
 
 .dv{
-        		margin-top: 1.5%;
-				text-align: center;
-				font-size: 37px;
-				 color: #FFD201;
+		margin-top: 1.5%;
+	text-align: center;
+	font-size: 37px;
+	color: #FFD201;
 }
 
 .GameName{
-				font-family: Txt;
-				text-align: center;
-				font-size: 94px;
-				 color: DarkOrange;
+	font-family: Txt;
+	text-align: center;
+	font-size: 94px;
+	color: DarkOrange;
 }
 		
  .menuBtn  {
@@ -175,10 +183,10 @@ body, html {
   outline: none;
   background: rgb(147,80,36) linear-gradient(rgb(106,58,26), rgb(147,80,36) 80%);
   box-shadow:
-   0 6px rgb(86,38,6),
-   0 3px 15px rgba(0,0,0,.4),
-   inset 0 1px rgba(255,255,255,.3),
-   inset 0 0 3px rgba(255,255,255,.5);
+	0 6px rgb(86,38,6),
+	0 3px 15px rgba(0,0,0,.4),
+	inset 0 1px rgba(255,255,255,.3),
+	inset 0 0 3px rgba(255,255,255,.5);
   transition: .2s;
 } 
 
@@ -189,10 +197,10 @@ body, html {
 .menuBtn:active {
   background: rgb(120,63,25) linear-gradient(rgb(120,63,25) 20%, rgb(167,91,41));
   box-shadow:
-   0 2px rgb(86,38,6),
-   0 1px 6px rgba(0,0,0,.4),
-   inset 0 1px rgba(255,255,255,.3),
-   inset 0 0 3px rgba(255,255,255,.5);
+	0 2px rgb(86,38,6),
+	0 1px 6px rgba(0,0,0,.4),
+	inset 0 1px rgba(255,255,255,.3),
+	inset 0 0 3px rgba(255,255,255,.5);
   -webkit-transform: translate(0, 4px);
   transform: translate(0, 4px);
 }
@@ -204,3 +212,11 @@ body, html {
   margin-bottom: 6%;
 }
 
+.rotate_180 {
+	transform: rotateY(180deg);
+}
+
+.change_size {
+	width: 100%;
+	height: 70%;
+}

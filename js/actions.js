@@ -4,6 +4,8 @@
 
 const enemy1DMG = new Obser();
 const enemy2DMG = new Obser();
+const enemy3DMG = new Obser();
+const enemy4DMG = new Obser();
 const heroTakesDMG = new Obser();
 const stage1Observer = new Obser();
 
@@ -13,7 +15,7 @@ const playerTakeDmg = hero.takeDMG.bind(hero);
 
 heroTakesDMG.subscribe(playerTakeDmg);
 
-const arrayObservers = [enemy1DMG, enemy2DMG];
+const arrayObservers = [enemy1DMG, enemy2DMG, enemy3DMG, enemy4DMG];
 const showDmg = (target) => {
   const NumDmg = document.createElement("div");
   NumDmg.classList.add("number_dmg");

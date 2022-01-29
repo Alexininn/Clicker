@@ -18,12 +18,16 @@ const createEnemyElements = (type, bottom, left, width, height) => {
   divEnemy.setAttribute("isAlive", "true");
 
   switch (type) {
-    case "skeleton" : {
-      divEnemy.classList.add("skeleton");
+    case "knight" : {
+      divEnemy.classList.add("knight");
       break;
     }
-    case "frog" : {
-      divEnemy.classList.add("frog");
+    case "wolf" : {
+      divEnemy.classList.add("wolf");
+      break;
+    }
+    case "yorn" : {
+      divEnemy.classList.add("yorn");
       break;
     }
   }
@@ -34,10 +38,10 @@ const createEnemyElements = (type, bottom, left, width, height) => {
   return {hp:divHp, wrap:divWrapEnemy, div:divEnemy,};
 };
 
-// Фабрика врагов первый параметр - тип врага, который совпадает с классом его Bg_image
-function FabricaEnemies(index = 0, bottom = 100, left = 0, width = 10, height = 10, type = "skeleton", hp = 50, dmg = 3, dmgPS = 3) {
+// Фабрика врагов 
+function FabricaEnemies(index = 0, bottom = 100, left = 0, width = 10, height = 10, type = "knight", hp = 50, dmg = 3, dmgPS = 3) {
   const newEnemy = new Enemy(hp, dmg, dmgPS);
-  let enemyTags = createEnemyElements(type, bottom, left, width);
+  let enemyTags = createEnemyElements(type, bottom, left, width, height);
 
   newEnemy.hpBar = enemyTags.hp;
   newEnemy.wrap = enemyTags.wrap;

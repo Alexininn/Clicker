@@ -81,6 +81,9 @@ class Enemy {
     this.isAlive = false;
     this.div.setAttribute("isAlive", "");
     this.wrap.classList.add("anime_death");
+    console.log(this.wrap);
+    setTimeout(() => {this.wrap.remove("wrap_enemy")}, 2000);
   }
+  
 };
 
