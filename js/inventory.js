@@ -1,24 +1,32 @@
 "use strict"
 
-let inventory = [0,1,0,0];
+let inventory = [0,0,0,0];
 
-const estus = document.createElement("div");
 
 function spawnItem(url, top = 0, left = 0) {
+const estus = document.createElement("div");
+
   estus.classList.add("item"); 
-  estus.style.backgroundImage = items[0];
+  estus.style.backgroundImage = url;
   estus.style.top = top + "px";
   estus.style.left = left + "px";
   wrap.append(estus);
+  return estus;
 }
-
-spawnItem(items[0]);
+let isIt = true;
+const estus = spawnItem(items[0]);
 
 const findItem = (event) => {
-  if (event.target.classList.contains("item")) {
-    event.target.style.opacity = 0;
-    inventory.indexOf(1);
+  if (isIt) {
+    isIt = false;
+    if (event.code === "KeyH") {
+      estus.style.opacity = 0;
+      hero.Curhp = hero.maxHp;
+      let hpLeft = hero.Curhp * 100 / hero.maxHp;
+      hero.hpBar.style.width = hpLeft + "%";
+      hero.hpBar.textContent = `${hero.Curhp}/${hero.maxHp}`;
+    }
   }
 };
 
-document.body.addEventListener("click", findItem);
+document.body.addEventListener("keydown", findItem);

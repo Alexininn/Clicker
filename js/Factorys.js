@@ -30,6 +30,14 @@ const createEnemyElements = (type, bottom, left, width, height) => {
       divEnemy.classList.add("yorn");
       break;
     }
+    case "nito" : {
+      divEnemy.classList.add("nito");
+      break;
+    }
+    case "pontifik" : {
+      divEnemy.classList.add("pontifik");
+      break;
+    }
   }
   divWrapEnemy.append(divHpBar);
   divHpBar.append(divHp);
@@ -39,15 +47,17 @@ const createEnemyElements = (type, bottom, left, width, height) => {
 };
 
 // Фабрика врагов 
-function FabricaEnemies(index = 0, bottom = 100, left = 0, width = 10, height = 10, type = "knight", hp = 50, dmg = 3, dmgPS = 3) {
+function FabricaEnemies(lvl, index, bottom, left, width, height, type, hp, dmg, dmgPS = 3, fontSize = 18) {
   const newEnemy = new Enemy(hp, dmg, dmgPS);
   let enemyTags = createEnemyElements(type, bottom, left, width, height);
 
+  newEnemy.lvl = lvl;
   newEnemy.hpBar = enemyTags.hp;
   newEnemy.wrap = enemyTags.wrap;
   newEnemy.div = enemyTags.div;
   newEnemy.div.setAttribute("number_enemy", index);
   enemyTags.hp.textContent = `${newEnemy.Curhp}/${newEnemy.maxHp}`;
+  enemyTags.hp.style.fontSize = fontSize + "px";
   return newEnemy;
 };
 

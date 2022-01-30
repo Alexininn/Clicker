@@ -25,26 +25,29 @@ class Hero {
     this.dmg = dmg;
     this.hpBar = null;
     this.isAlive = true;
-  }
+    this.num = 0;
+  };
 
   attack(dmg, i){
     arrayObservers[i].broadcast(dmg);
-    }
+    };
 
   takeDMG(dmg) {
     this.Curhp -= dmg;
     if (this.Curhp <= 0) {
       this.death();
     }
-    let hpLeft = this.Curhp * 100 / this.maxHp;
-    this.hpBar.style.width = hpLeft + "%";
-    this.hpBar.textContent = `${this.Curhp}/${this.maxHp}`;
-  }
+      let hpLeft = this.Curhp * 100 / this.maxHp;
+      this.hpBar.style.width = hpLeft + "%";
+      this.hpBar.textContent = `${this.Curhp}/${this.maxHp}`;
+  };
 
   death() {
     this.Curhp = 0;
     this.isAlive = false;
-  }
+    createFinalScreen("You're DEAD", "onion");
+    heroDeath.broadcast(true);
+  };
 };
 
 class Enemy {
@@ -57,6 +60,7 @@ class Enemy {
     this.isAlive = true;
     this.wrap = null;  // В фабрике сюда передаем div class = "wrap_enemy"
     this.div = null; // В фабрике сюда передаем div class = "enemy"
+    this.lvl = null; // При создании задаем номер уровня
   }
   
   attack(dmg) { //Метод врага атаки по герою
@@ -81,9 +85,40 @@ class Enemy {
     this.isAlive = false;
     this.div.setAttribute("isAlive", "");
     this.wrap.classList.add("anime_death");
-    console.log(this.wrap);
+    stage1Observer.broadcast(this.lvl);
     setTimeout(() => {this.wrap.remove("wrap_enemy")}, 2000);
   }
-  
 };
 
+class Game {
+  constructor() {
+    this.start = false;
+    this.arrLvls = [];
+  }
+
+  lvlIsEnd(lvl) {
+    switch (lvl) {
+      case 1: {
+        this.arrLvls.push(lvl);
+        if ( this.arrLvls.length === 3) {
+          this.arrLvls.length = 0;
+          stage2();
+        }
+      break;
+      }
+      case 2: {
+        this.arrLvls.length = 0;
+        stage3();
+      break;
+      }
+      case 3: {
+        this.arrLvls.push(lvl);
+        if ( this.arrLvls.length === 5) {
+          this.arrLvls.length = 0;
+          createFinalScreen("You Win?", "sun_knight");
+        }
+      break;
+      }
+    }
+  }
+};

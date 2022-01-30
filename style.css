@@ -10,7 +10,7 @@ body, html {
 	user-select: none;
 }
 
-.stage1_wrap {
+.stage_wrap {
 	width: 100%;
 	height: 100%;
 }
@@ -55,6 +55,7 @@ body, html {
 	width: 100%;
 	height: 90%;
 	background-size: cover;
+	background-position: center;
 }
 
 .knight {
@@ -68,9 +69,18 @@ body, html {
 	background-image: url(./images/yorn.gif);
 }
 
+.nito {
+	background-image: url(./images/nito.gif);
+}
+
+.pontifik {
+	background-image: url(./images/Pontifik.gif);
+}
+
 .hp {
 	width: 100%;
 	height: 100%;
+	border-radius: 7px;
 	background-color: hsl(0deg 100% 45% / 50%);
 }
 
@@ -78,6 +88,7 @@ body, html {
 	width: 100%;
 	height: 9%;
 	background-color: hsl(0deg 100% 82% / 50%);
+	border-radius: 7px;
 	font-size: 20px;
 	color: #fff;
 }
@@ -138,6 +149,7 @@ body, html {
 	width: 20%;
 	background-color: hsl(0deg 100% 82% / 50%);
 	font-size: 20px;
+	border-radius: 7px;
 	color: #fff;
 }
 
@@ -216,7 +228,42 @@ body, html {
 	transform: rotateY(180deg);
 }
 
-.change_size {
+.hero_dead {
+	top:0px;
+	left:0px;
+	height: 100%;
 	width: 100%;
-	height: 70%;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: absolute;
+	z-index: 10;
+	transition: 1s;
+}
+
+.back {
+	width: 30%;
+	height: 10%;
+	font-size: 35px;
+	text-align: center;
+	position: relative;
+	left: 35%;
+}
+
+.gif {
+	height: 50%;
+	width: 25%;
+	position: absolute;
+	left: 42%;
+	bottom: 0%;
+	background-repeat: no-repeat;
+	background-size:contain;
+}
+
+.sun_knight {
+	background-image: url(./images/sun.gif);
+}
+
+
+.onion {
+	background-image: url(./images/onion.gif);
+	
 }
