@@ -265,5 +265,23 @@ body, html {
 
 .onion {
 	background-image: url(./images/onion.gif);
-	
+}
+
+.rules {
+	border-radius: 50px;
+	background-color: rgb(193 107 49 / 83%);
+	position: absolute;
+	bottom: 20%;
+	right: 1%;
+	font-size: 25px;
+	font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0,0,0,.5);
+  user-select: none;
+  padding: .3em 1.1em;
+}
+
+span span {
+	font-size: 20px;
 }
