@@ -69,6 +69,9 @@ class Enemy {
   
   attack(dmg) { //Метод врага атаки по герою
     if (this.isAlive) {
+      const soundAttack = new Audio(ArrMusic[6]);///
+      soundAttack.volume = 0.1;
+      soundAttack.play();
       heroTakesDMG.broadcast(dmg);
       redScreen();
     }
@@ -123,7 +126,11 @@ class Game {
         this.arrLvls.push(lvl);
         if ( this.arrLvls.length === 5) {
           this.arrLvls.length = 0;
-          createFinalScreen("You Win?", "sun_knight");
+          createFinalScreen("You Win!", "sun_knight");
+          musicBack.pause();
+          const soundAttack = new Audio(ArrMusic[5]);///
+          soundAttack.volume = 0.1;
+          soundAttack.play();
         }
       break;
       }

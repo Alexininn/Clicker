@@ -1,10 +1,11 @@
 'use strict';
 
 // Глобальный код для всего документа
-const ArrMusic = ["../audio/Menu_loop.mp3", "../audio/drop_002.ogg", "../audio/swallow-03.flac", "../audio/getDmg2.mp3", "../audio/fail.mp3"];
+const ArrMusic = ["./audio/Menu_loop.mp3", "./audio/drop_002.ogg", "./audio/swallow-03.flac", "./audio/getDmg2.mp3", "./audio/fail.mp3", "./audio/victory.mp3", "./audio/getDmg2.mp3"];
 const musicBack = (() => {
     let musTurn = true;
-  const backgroundMusic = new Audio(ArrMusic[0]);
+  const backgroundMusic = new Audio();
+  backgroundMusic.src = ArrMusic[0];
 
   const musicOn = () => {
     if (musTurn) {
