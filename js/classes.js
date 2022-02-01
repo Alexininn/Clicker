@@ -47,6 +47,10 @@ class Hero {
     this.isAlive = false;
     createFinalScreen("You're DEAD", "onion");
     heroDeath.broadcast(true);
+    const soundAttack = new Audio(ArrMusic[4]);///
+    soundAttack.volume = 0.1;
+    soundAttack.play();
+    musicBack.pause();
   };
 };
 
@@ -83,6 +87,10 @@ class Enemy {
   death() {
     this.Curhp = 0;
     this.isAlive = false;
+    const soundAttack = new Audio("../audio/damage.mp3");///
+    soundAttack.volume = 1;
+    soundAttack.currentTime = 0.3;
+    soundAttack.play();
     this.div.setAttribute("isAlive", "");
     this.wrap.classList.add("anime_death");
     stage1Observer.broadcast(this.lvl);

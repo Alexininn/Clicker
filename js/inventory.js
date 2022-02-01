@@ -20,6 +20,9 @@ const findItem = (event) => {
   if (isIt) {
     isIt = false;
     if (event.code === "KeyH") {
+      const soundHeal = new Audio(ArrMusic[2])
+      soundHeal.volume = 1;
+      soundHeal.play();
       estus.style.opacity = 0;
       hero.Curhp = hero.maxHp;
       let hpLeft = hero.Curhp * 100 / hero.maxHp;

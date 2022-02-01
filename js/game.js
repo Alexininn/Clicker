@@ -10,7 +10,7 @@
       body.classList.remove("stage3");
       body.classList.add("stage1");
 
-      const enemy1 = FabricaEnemies(1, 0, 2, 41.5, 20, 50, "knight", 75, 5, 5); //lvl index bottom left, width, height, type, hp, dmg, dmgPerSecond
+      const enemy1 = FabricaEnemies(1, 0, 2, 41.5, 26, 60, "knight", 75, 5, 4); //lvl index bottom left, width, height, type, hp, dmg, dmgPerSecond
       const enemySkeletontakeDmg = enemy1.takeDMG.bind(enemy1);
       const enemy2 = FabricaEnemies(1, 1, 20, 73, 10, 20,"wolf", 30, 4, 3, 13);  //lvl index bottom left, width, height, type, hp, dmg, dmgPerSecond
       const enemySkeleton2takeDmg = enemy2.takeDMG.bind(enemy2);

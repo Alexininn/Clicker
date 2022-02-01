@@ -1,6 +1,25 @@
 'use strict';
 
 // Глобальный код для всего документа
+const ArrMusic = ["../audio/Menu_loop.mp3", "../audio/drop_002.ogg", "../audio/swallow-03.flac", "../audio/getDmg2.mp3", "../audio/fail.mp3"];
+const musicBack = (() => {
+    let musTurn = true;
+  const backgroundMusic = new Audio(ArrMusic[0]);
+
+  const musicOn = () => {
+    if (musTurn) {
+    backgroundMusic.volume = 0.05;
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+    musTurn = false;
+    }
+  };
+
+  document.addEventListener("click", musicOn);
+  return backgroundMusic;
+})();
+
+
 const body = document.querySelector(".body");
 const wrap = document.getElementsByClassName("stage_wrap")[0];
 const hpHero = document.querySelector(".hero_hp > .hp");   
@@ -14,6 +33,15 @@ function randomUntil(until = 2) {
   return Math.floor(Math.random() * until);
 }
 
+const addDrop = (event) => {
+  if (event.target.classList.contains("menuBtn")) {
+    const drop = new Audio(ArrMusic[1]);
+    drop.volume = 0.2;
+    drop.play();
+  }
+};
+
+document.addEventListener("mouseover", addDrop);
 
 let isTrue = true;
 

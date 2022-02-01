@@ -44,6 +44,9 @@ const attackEnemy = (event) => {
     const target = event.target;
     if (target.getAttribute("isAlive") && hero.isAlive) {
       const i = event.target.getAttribute("number_enemy");
+      const soundAttack = new Audio(ArrMusic[3]);///
+      soundAttack.volume = 0.1;
+      soundAttack.play();
       hero.attack(hero.dmg, i);
       showDmg(target);
     } 
